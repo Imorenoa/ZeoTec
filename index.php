@@ -2,13 +2,14 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <link rel = stylesheet href = "style.css" type = "text/css">
     <title>Practica ZEO Technology</title>
 </head>
 <body>
 <div id="topnav">
-    <a href="#newuser">Registrar usuario</a>
-    <a href="#acceder">Acceder</a>
-    <a href="#listauser">Listado de usuarios</a>
+    <div id="newUser" class = "click">Registrar usuario</div>
+    <div id="acceder" class = "click">Acceder</div>
+    <div id="listaUser" class = "click">Listado de usuarios</div>
 
 </div>
 <!--Alta de usuarios-->
@@ -43,4 +44,5 @@
 
 
 </body>
+<script src = "script.js"></script>
 </html>
