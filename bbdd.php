@@ -11,7 +11,7 @@ function conectarDb($database)
 
     return $conexion;
 }
-
+//Obtencion de los datos de la tabla user
 function getUser()
 {
     $DB = conectarDb("zeotec");
@@ -25,7 +25,7 @@ function getUser()
     mysqli_close($DB);
 
 }
-
+//Muestra tabla de usuarios
 function showUser()
 {
     $usuarios = getUser();
@@ -39,13 +39,47 @@ function showUser()
         <th>Email:</th>
     </tr>
 </table>";
-    foreach ($usuarios as $row){
+    foreach ($usuarios as $row) {
         echo "<tr>
-            <th>".$row["UserID"]."</th>";
-            echo  "<th>".$row["Name"]."</th>";
-            echo "<th>".$row["Birthdate"]."</th>";
-            echo "<th>".$row["Email"]."</th>";
-            echo "</tr>";
+            <th>" . $row["UserID"] . "</th>";
+        echo "<th>" . $row["Name"] . "</th>";
+        echo "<th>" . $row["Birthdate"] . "</th>";
+        echo "<th>" . $row["Email"] . "</th>";
+        echo "</tr>";
 
     };
 }
+
+function anyadirUser ($altName, $altEdad, $altMail, $altPass) {
+
+    $DB = conectarDb("zeotec");
+
+    $query = "INSERT INTO `user`(`Name`, `Birthdate`, `Email`, `Password`) VALUES ('".$altName."','".$altEdad."','".$altMail."','".$altPass."')";
+
+    $anyadir = mysqli_query($DB, $query);
+
+    if ($anyadir) {
+        return $anyadir;
+    } else {
+        echo "Error al añadir usuario";
+    }
+
+    mysqli_close($DB);
+}
+
+function checkUser($usuario, $contrasenya){
+
+    $DB = conectarDb("zeotec");
+    var_dump($usuario);
+    var_dump($contrasenya);
+
+    $query = mysqli_query($DB, "SELECT * FROM 'user' WHERE Name ='$usuario' AND Password '$contrasenya'");
+
+
+    if (isset($query)){
+        session_start();
+    }
+
+}
+
+?>
