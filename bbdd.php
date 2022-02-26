@@ -30,11 +30,22 @@ function showUser()
 {
     $usuarios = getUser();
 
-    echo  "<table>
+    echo "
+<table>
     <tr>
+        <th>UserID</th>
         <th>Nombre:</th>
         <th>Edad:</th>
         <th>Email:</th>
     </tr>
 </table>";
+    foreach ($usuarios as $row){
+        echo "<tr>
+            <th>".$row["UserID"]."</th>";
+            echo  "<th>".$row["Name"]."</th>";
+            echo "<th>".$row["Birthdate"]."</th>";
+            echo "<th>".$row["Email"]."</th>";
+            echo "</tr>";
+
+    };
 }
