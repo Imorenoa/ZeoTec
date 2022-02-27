@@ -70,16 +70,29 @@ function anyadirUser ($altName, $altEdad, $altMail, $altPass) {
 function checkUser($usuario, $contrasenya){
 
     $DB = conectarDb("zeotec");
-    var_dump($usuario);
-    var_dump($contrasenya);
 
-    $query = mysqli_query($DB, "SELECT * FROM 'user' WHERE Name ='$usuario' AND Password '$contrasenya'");
+    $query = "SELECT * FROM user WHERE Name = '$usuario' AND Password = $contrasenya";
 
+    $result = mysqli_query($DB, "$query");
 
-    if (isset($query)){
-        session_start();
+    $row = mysqli_fetch_assoc($result);
+
+    $filasEncontradas = mysqli_num_rows($result);
+
+    if (isset($result)){
+        if ($filasEncontradas >= 1){
+            session_start();
+            $_SESSION['Name'] = $row['Name'];
+            $_SESSION['Password'] = $row['Password'];
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        echo "No se ha podido realizar la consulta";
+        return false;
     }
-
+    mysqli_close($DB);
 }
 
 ?>
