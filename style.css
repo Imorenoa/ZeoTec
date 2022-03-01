@@ -1,11 +1,20 @@
-/*#formAltaUser{*/
-/*    display: none;*/
-/*}*/
+.nav-item{
+    color: white;
+    display: flex;
+    width: 30%;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Smooch Sans', sans-serif;
+    font-size: x-large;
+}
+.click:hover {
+    background-color: darkorange;
+    color: black;
+}
+body {
+    background-color: #004153;
+}
 
-/*#autUser{*/
-/*    display: none;*/
-/*}*/
-
-/*#tablaUser {*/
-/*    display: none;*/
-/*}*/

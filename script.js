@@ -1,11 +1,3 @@
-//Se ejecuta un evento al cargar la pagina para establecer el estilo de display en none para cada uno de los menus
-// window.onload = function ()
-// {
-//     document.getElementById("formAltaUser").style.display = "none";
-//     document.getElementById("autUser").style.display = "none";
-//     document.getElementById("tablaUser").style.display = "none";
-// }
-
 //Captura de los eventos click para pasarlo como parametro a la funcion selectorMenu
 document.querySelectorAll(".click").forEach(el => {
     el.addEventListener("click", e => {
@@ -16,7 +8,7 @@ document.querySelectorAll(".click").forEach(el => {
 })
 
 //Segun id pasado ejecucion del switch correspondiente
-function selectorMenu (id){
+function selectorMenu(id) {
     switch (id) {
         case "newUser":
             document.getElementById("formAltaUser").style.display = "";
@@ -38,4 +30,20 @@ function selectorMenu (id){
             document.getElementById("autUser").style.display = "none";
             document.getElementById("tablaUser").style.display = "none";
     }
+}
+
+function validacionAltauser (){
+    if (valor == null || valor.length === 0) {
+        //    Validacion del campo Name
+        alert('Debes introducir un nombre valido');
+        return false;
+    } else if (!(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/.test(valor))) {
+        //    Validacion del campo email
+        alert('Introduce una dirección de email valida');
+        return false
+    } else if (valor == null || valor.length === 0) {
+        //    Validacion del campo contraseña
+        alert('Introduce una contraseña valida');
+    } else
+        return true;
 }

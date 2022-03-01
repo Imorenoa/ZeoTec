@@ -31,23 +31,24 @@ function showUser()
     $usuarios = getUser();
 
     echo "
-<table>
+<table class='table'>
     <tr>
         <th>UserID</th>
         <th>Nombre:</th>
         <th>Edad:</th>
         <th>Email:</th>
-    </tr>
-</table>";
+    </tr>";
     foreach ($usuarios as $row) {
         echo "<tr>
             <th>" . $row["UserID"] . "</th>";
         echo "<th>" . $row["Name"] . "</th>";
-        echo "<th>" . $row["Birthdate"] . "</th>";
+        echo "<th>" . calculaEdad($row["Birthdate"]) . "</th>";
         echo "<th>" . $row["Email"] . "</th>";
         echo "</tr>";
 
+
     };
+    echo "</table>";
 }
 
 function anyadirUser ($altName, $altEdad, $altMail, $altPass) {
@@ -69,6 +70,8 @@ function anyadirUser ($altName, $altEdad, $altMail, $altPass) {
 
 function checkUser($usuario, $contrasenya){
 
+    $msg = '';
+
     $DB = conectarDb("zeotec");
 
     $query = "SELECT * FROM user WHERE Name = '$usuario' AND Password = $contrasenya";
@@ -86,13 +89,23 @@ function checkUser($usuario, $contrasenya){
             $_SESSION['Password'] = $row['Password'];
             return true;
         } else {
+            $msg = "Nombre y/o contraseña incorrectas";
             return false;
         }
     } else {
-        echo "No se ha podido realizar la consulta";
+            $msg = "No se ha podido realizar la consulta";
         return false;
     }
     mysqli_close($DB);
 }
 
+function calculaEdad($fechaNac){
+    $hoy = date("Y-m-d");
+
+    $edadDif = date_diff(date_create($fechaNac), date_create($hoy) );
+
+    $edad = $edadDif -> format('%y');
+
+    return $edad;
+};
 ?>
