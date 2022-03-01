@@ -1,5 +1,9 @@
-.nav-item{
+* {
+    font-family: 'Smooch Sans', sans-serif;
     color: white;
+}
+
+.nav-item{
     display: flex;
     width: 30%;
     height: 60px;
@@ -7,14 +11,36 @@
     justify-content: center;
     border-radius: 10px;
     cursor: pointer;
-    font-family: 'Smooch Sans', sans-serif;
     font-size: x-large;
 }
-.click:hover {
-    background-color: darkorange;
+
+.nav-item:hover {
+    background-color: #015467;
+}
+
+.nav-item {
+    transition: background-color 0.2s linear 0.1ms;
+}
+
+.boton {
     color: black;
 }
-body {
-    background-color: #004153;
+
+input  {
+    color: black;
 }
+
+.form {
+    margin: 50px;
+    padding: 20px;
+    border: 1px solid white;
+    font-size: large;
+}
+.form input {
+    padding: 2px;
+    margin: 1%;
+}
+
+
+
 
