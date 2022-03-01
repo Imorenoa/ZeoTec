@@ -12,7 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Practica ZEO Technology</title>
 </head>
-<body style="background-color: #004153">
+
+<!--Me duele muchisimo añadir aqui el estilo al background, pero no se por que no lo aplica a todo el body desde la hoja de estilos-->
+<body style="background-color: #004567">
 
 <?php
 
@@ -45,12 +47,12 @@ if (isset($_POST['acceder'])) {
 
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-light #004153">
+<nav class="navbar navbar-expand-lg navbar-light">
     <div id="topnav" class="container-fluid">
-        <a href="#" class="navbar-brand">
+        <a href="https://zeotechnology.com/" class="navbar-brand">
             <img src="https://mlgoz2o88qp4.i.optimole.com/Z5RX2uE-Lx4Harws/w:600/h:250/q:auto/https://zeotechnology.com/wp-content/uploads/2021/05/zeo-technology-w-600.png"
                  alt="Logo Zeo"
-                 width="120" height="50" class="d-inline-block align-top">
+                 width="120" height="50" class="d-sm-none, d-md-block">
         </a>
         <div id="newUser" class="click nav-item">Registrar usuario</div>
         <div id="acceder" class="click nav-item">Acceder</div>
@@ -60,27 +62,37 @@ if (isset($_POST['acceder'])) {
 </nav>
 <!--Alta de usuarios-->
 <div id="formAltaUser" style="display: none">
-    <form action="index.php" method='POST' onsubmit="return validacionAltauser()">
-        <label for="altName">Nombre:</label><input type="text" id="altName" name="altName"><br>
-        <label for="altEdad">Fecha de nacimiento:</label><input type="date" id="altEdad" name="altEdad"><br>
-        <label for="altMail">Email:</label><input type="email" id="altMail" name="altMail"><br>
-        <label for="altPass">Contraseña:</label><input type="password" id="altPass" name="altPass"><br>
-        <input type="submit" name="anyadir">
+    <form action="index.php" method='POST'>
+    <fieldset class="form">
+        <legend>Formulario de alta</legend>
+        <label for="altName">Nombre:</label><br><input type="text" id="altName" name="altName"
+                                                       placeholder="Nombre de usuario" required><br>
+        <label for="altEdad">Fecha de nacimiento:</label><br><input type="date" id="altEdad" name="altEdad"
+                                                                    required><br>
+        <label for="altMail">Email:</label><br><input type="email" id="altMail" name="altMail"
+                                                      placeholder="usuario@mail.com" required><br>
+        <label for="altPass">Contraseña:</label><br><input type="password" id="altPass" name="altPass"
+                                                           placeholder="Contraseña" required><br>
+        <input type="submit" name="anyadir" value="Registrar usuario" class="boton">
+    </fieldset>
     </form>
+
 </div>
-<br>
 
 <!--Ventana de autenticacion-->
 <div id="autUser" style="display: none">
     <form action="index.php" method="POST">
-        <label for="name">Email:</label><input type="text" id="name" name="name"><br>
-        <label for="pass">Contraseña:</label><input type="password" id="pass" name="pass"><br>
-        <input type="submit" name="acceder">
-
+        <fieldset class="form">
+            <legend>Acceso</legend>
+            <label for="name">Email:</label><br><input type="text" id="name" name="name" placeholder="Nombre de usuario"
+                                                       required><br>
+            <label for="pass">Contraseña:</label><br><input type="password" id="pass" name="pass"
+                                                            placeholder="Contraseña" required><br>
+            <input type="submit" name="acceder" value="Acceder" class="boton">
+        </fieldset>
     </form>
 
 </div>
-<br>
 
 <!--Lista de usuarios-->
 <div id="tablaUser">

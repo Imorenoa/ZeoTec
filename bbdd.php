@@ -2,6 +2,7 @@
 
 <?php
 
+//Conexion a la base dee datos
 function conectarDb($database)
 {
     $host = "localhost";
@@ -70,8 +71,6 @@ function anyadirUser ($altName, $altEdad, $altMail, $altPass) {
 
 function checkUser($usuario, $contrasenya){
 
-    $msg = '';
-
     $DB = conectarDb("zeotec");
 
     $query = "SELECT * FROM user WHERE Name = '$usuario' AND Password = $contrasenya";
@@ -89,16 +88,17 @@ function checkUser($usuario, $contrasenya){
             $_SESSION['Password'] = $row['Password'];
             return true;
         } else {
-            $msg = "Nombre y/o contraseña incorrectas";
+
             return false;
         }
     } else {
-            $msg = "No se ha podido realizar la consulta";
+
         return false;
     }
     mysqli_close($DB);
 }
 
+//Transformar el formato fecha a la edad actual
 function calculaEdad($fechaNac){
     $hoy = date("Y-m-d");
 
